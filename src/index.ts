@@ -4,14 +4,12 @@ function greet(name: string) {
 
 console.log(greet("TypeScript"));
 
-// Add this line
+// drill2
 const scores: number[] = [10, 20];
 const firstScore = scores[0];
 const impossibleScore = scores[100];
 
-// Hover over 'impossibleScore'.
-// Because of "noUncheckedIndexedAccess": true,
-// TypeScript will warn you that this might be 'undefined'.
+// module hygiene drill
 
 import { UserSchema } from "./validate";
 
@@ -28,3 +26,15 @@ try {
 } catch (error) {
   console.error("Validation failed:", error);
 }
+
+//drill5
+
+import dayjs from "dayjs";
+// Notice the 'type' keyword here:
+import type { ConfigType } from "dayjs";
+
+function formatDate(date: ConfigType): string {
+  return dayjs(date).format("YYYY-MM-DD");
+}
+
+console.log(formatDate(new Date()));
